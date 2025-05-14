@@ -87,12 +87,54 @@ likeButton.addEventListener("click", () => {
 
 
 
+
 // Bonus: ITERATION 4 - Add Random Contacts
-// Step 1: Add click event listener to the add random button
-// buttonAddRandom.addEventListener("click", () => {
-  // Step 2: When clicked, get a random contact
-//   const randomIn
-// })
-// Step 3: Create a new row for the contact
-// Step 4: Add event listeners to the new row's buttons
-// Step 5: Append the row to the table
+// Add event listener to the "Add Random Contact" button
+buttonAddRandom.addEventListener("click", () => {
+  // Check if there are any contacts left in the array
+  if (contacts.length === 0) {
+    alert("No more contacts to add!"); // Alert if all contacts have been used
+    return; // Exit the function
+  }
+  
+  // Generate a random index within the remaining contacts
+  const randomIndex = Math.floor(Math.random() * contacts.length);
+  
+  // Remove 1 element at the random index and get the contact
+  const randomContact = contacts.splice(randomIndex, 1)[0];
+  
+  // Create a new row for the random contact
+  const newRow = document.createElement("tr");
+  
+  // Set the inner HTML of the row with contact data
+  newRow.innerHTML = `
+    <td>
+      <img src="${randomContact.pictureUrl}" /> <!-- Display contact image -->
+    </td>
+    <td>${randomContact.name}</td> <!-- Display contact name -->
+    <td>${randomContact.popularity.toFixed(2)}</td> <!-- Display contact popularity with 2 decimal places -->
+    <td>
+      <button class="btn-delete">Delete</button> <!-- Add delete button -->
+    </td>
+    <td>
+      <button class="btn-like">
+        <img src="./images/icon.png" alt="like" /> <!-- Add like button with icon -->
+      </button>
+    </td>
+  `;
+  
+  // Append the new row to the table body
+  tableBody.appendChild(newRow);
+  
+  // Add event listener to the delete button of the new row
+  const deleteButton = newRow.querySelector(".btn-delete");
+  deleteButton.addEventListener("click", () => {
+    newRow.remove(); // Remove the row when delete is clicked
+  });
+  
+  // Add event listener to the like button of the new row
+  const likeButton = newRow.querySelector(".btn-like");
+  likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle("selected"); // Toggle the selected class when like is clicked
+  });
+});
