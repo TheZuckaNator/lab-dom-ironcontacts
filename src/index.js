@@ -2,16 +2,18 @@
 const buttonAddRandom = document.querySelector("#btn-add-random");
 const tableBody = document.querySelector("tbody#contacts");
 
-
 // ITERATION 0 | Example Row
-// Splice 1 element from the contacts array at the random index
+// Step 1: Get a random contact from the contacts array
 const randomIndex = Math.floor(Math.random() * contacts.length);
 const splicedArr = contacts.splice(randomIndex, 1);
 
-// Get the element from the spliced array
+// Step 2: Access the contact object 
 const randomContact = splicedArr[0];
 
+// Step 3: Create a new table row
 const exampleRow = document.createElement("tr");
+
+// Step 4: Add the contact data to the row
 exampleRow.innerHTML = `
   <td>
     <img src="${randomContact.pictureUrl}" />
@@ -28,34 +30,35 @@ exampleRow.innerHTML = `
   </td>
 `;
 
+// Step 5: Add the row to the table
 tableBody.appendChild(exampleRow);
 
 
-
-
-
 // ITERATION 1 - Display 3 contacts
-// Get the first 3 contacts from the 'contacts' array.
+// Step 1: Get the first 3 contacts
 const threeContacts = contacts.splice(0, 3);
 
-// Your code goes here ...
+// Step 2: Loop through each contact
+// Step 3: Create a row for each contact
+// Step 4: Set the row's HTML
+// Step 5: Append the row to the table
 
 
-  
-  // ITERATION 2 - Delete Buttons
-  
-  // Your code goes here ...
-  
-  
+// ITERATION 2 - Delete Buttons
+// Step 1: Get all delete buttons
+// Step 2: Add click event listener to each button
+// Step 3: When clicked, remove the parent row
 
-  // ITERATION 3 - Like Buttons
 
-  // Your code goes here ...
-
-  
-  
+// ITERATION 3 - Like Buttons
+// Step 1: Get all like buttons
+// Step 2: Add click event listener to each button
+// Step 3: When clicked, toggle the 'selected' class
 
 
 // Bonus: ITERATION 4 - Add Random Contacts
-
-// Your code goes here ...
+// Step 1: Add click event listener to the add random button
+// Step 2: When clicked, get a random contact
+// Step 3: Create a new row for the contact
+// Step 4: Add event listeners to the new row's buttons
+// Step 5: Append the row to the table
